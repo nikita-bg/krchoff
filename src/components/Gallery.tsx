@@ -32,39 +32,63 @@ function FadeInWhenVisible({
 
 const galleryItems = [
   {
-    src: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=600&q=80&fit=crop",
-    alt: "AI-generated surreal landscape",
-    caption: "Dreamscape Series",
+    src: "/gallery-igloo.png",
+    alt: "Nikita in igloo with Porsche GT3",
+    caption: "Arctic GT3",
     tall: true,
   },
   {
-    src: "https://images.unsplash.com/photo-1547954575-855750c57bd3?w=600&q=80&fit=crop",
-    alt: "AI-generated abstract portrait",
-    caption: "Digital Consciousness",
-    tall: false,
-  },
-  {
-    src: "https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=600&q=80&fit=crop",
-    alt: "AI-generated futuristic architecture",
-    caption: "Future Forms",
-    tall: false,
-  },
-  {
-    src: "https://images.unsplash.com/photo-1535378917042-10a22c95931a?w=600&q=80&fit=crop",
-    alt: "AI-generated cosmic art",
-    caption: "Cosmic Echoes",
-    tall: false,
-  },
-  {
-    src: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600&q=80&fit=crop",
-    alt: "AI-generated still life",
-    caption: "Golden Hour",
+    src: "/gallery-hammer.png",
+    alt: "Sledgehammer impact",
+    caption: "Breaking Ground",
     tall: true,
   },
   {
-    src: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=600&q=80&fit=crop",
-    alt: "AI-generated nature macro",
-    caption: "Micro Worlds",
+    src: "/gallery-tshirt.png",
+    alt: "Vintage band tee close-up",
+    caption: "Worn Stories",
+    tall: false,
+  },
+  {
+    src: "/gallery-amour.png",
+    alt: "Amour perfume Valentine's edition",
+    caption: "Amour",
+    tall: true,
+  },
+  {
+    src: "/gallery-porsche-flowers.png",
+    alt: "Porsche with wildflowers in trunk",
+    caption: "Desert Bloom",
+    tall: true,
+  },
+  {
+    src: "/gallery-sewing.png",
+    alt: "Hands sewing traditional Bulgarian carpet",
+    caption: "Heritage Craft",
+    tall: true,
+  },
+  {
+    src: "/gallery-studio.png",
+    alt: "Studio shoot with carpet and AMG",
+    caption: "East Meets West",
+    tall: true,
+  },
+  {
+    src: "/gallery-rain.png",
+    alt: "Tropical resort in the rain",
+    caption: "Monsoon Season",
+    tall: true,
+  },
+  {
+    src: "/gallery-porsche-wide.png",
+    alt: "Porsche with daisies wide angle",
+    caption: "Wildflower Porsche",
+    tall: false,
+  },
+  {
+    src: "/gallery-extra.png",
+    alt: "Creative direction",
+    caption: "Creative Direction",
     tall: false,
   },
 ];
@@ -80,7 +104,7 @@ export default function Gallery() {
               Creative
             </p>
             <h2 className="mt-4 font-serif text-4xl font-light tracking-editorial text-foreground md:text-5xl">
-              AI Creative Work
+              Visual Journal
             </h2>
           </div>
         </FadeInWhenVisible>

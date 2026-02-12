@@ -82,11 +82,11 @@ export default function Hero() {
         className="absolute right-0 top-0 hidden h-full w-[55%] lg:block"
       >
         <Image
-          src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=1200&q=80&fit=crop&crop=face"
+          src="/hero-nikita.png"
           alt="Nikita Kratcholov portrait"
           fill
           priority
-          className="object-cover object-center"
+          className="object-cover object-[center_20%]"
           sizes="55vw"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-background via-background/30 to-transparent" />
@@ -95,7 +95,7 @@ export default function Hero() {
       {/* Mobile hero image */}
       <div className="absolute inset-0 -z-10 lg:hidden">
         <Image
-          src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=800&q=60&fit=crop&crop=face"
+          src="/hero-nikita.png"
           alt=""
           fill
           priority

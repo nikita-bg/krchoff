@@ -44,8 +44,8 @@ export default function About() {
         <FadeInWhenVisible>
           <div className="relative aspect-[3/4] w-full overflow-hidden">
             <Image
-              src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=800&q=80&fit=crop&crop=face"
-              alt="Nikita working at his desk"
+              src="/about-nikita.png"
+              alt="Nikita Kratcholov"
               fill
               className="object-cover transition-transform duration-700 ease-out hover:scale-[1.02]"
               sizes="(max-width: 1024px) 100vw, 50vw"

@@ -1,7 +1,7 @@
 export default function Footer() {
   return (
-    <footer className="border-t border-divider px-6 py-10 md:px-12 lg:px-20">
-      <p className="text-center font-[family-name:var(--font-dm-sans)] text-xs tracking-[0.15em] text-text-secondary">
+    <footer className="border-t border-border px-6 py-10 lg:px-12">
+      <p className="text-center font-sans text-xs tracking-wide-nav text-muted-foreground">
         &copy; 2025 Nikita Kratcholov &middot; krchoff.com
       </p>
     </footer>

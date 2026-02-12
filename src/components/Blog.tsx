@@ -3,75 +3,84 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 
+function FadeInWhenVisible({
+  children,
+  delay = 0,
+}: {
+  children: React.ReactNode;
+  delay?: number;
+}) {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-80px" });
+
+  return (
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, y: 20 }}
+      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+      transition={{
+        duration: 0.8,
+        delay,
+        ease: [0.22, 1, 0.36, 1],
+      }}
+    >
+      {children}
+    </motion.div>
+  );
+}
+
 const posts = [
   {
-    title: "Why AI Agents Will Replace SaaS",
-    date: "Coming soon",
+    title: "Why AI Products Fail (And How to Fix It)",
+    date: "Coming Soon",
     excerpt:
-      "The next wave of software won't be apps — it will be autonomous agents.",
+      "Most AI startups solve problems nobody has. Here\u2019s what actually matters.",
   },
   {
-    title: "Building in Public: Lessons Learned",
-    date: "Coming soon",
+    title: "The Minimalist Founder\u2019s Playbook",
+    date: "Coming Soon",
     excerpt:
-      "What 3 years of building startups taught me about transparency.",
+      "Building with constraints isn\u2019t a limitation \u2014 it\u2019s a superpower.",
   },
   {
-    title: "The Art of Simple Design",
-    date: "Coming soon",
+    title: "From Idea to Revenue in 90 Days",
+    date: "Coming Soon",
     excerpt:
-      "Why removing features is harder — and more valuable — than adding them.",
+      "A practical framework for shipping products that generate real income.",
   },
 ];
 
 export default function Blog() {
-  const ref = useRef<HTMLElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-100px" });
-
   return (
-    <section
-      ref={ref}
-      id="blog"
-      className="px-6 py-[120px] md:px-12 lg:px-20"
-    >
-      <div className="mx-auto max-w-[1400px]">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          className="mb-20 text-center"
-        >
-          <p className="font-[family-name:var(--font-dm-sans)] text-sm tracking-[0.2em] text-text-secondary">
-            &mdash; Journal
-          </p>
-          <h2 className="mt-4 font-[family-name:var(--font-cormorant)] text-4xl font-light tracking-[0.03em] text-foreground md:text-5xl">
-            Thoughts
-          </h2>
-        </motion.div>
+    <section className="px-6 py-28 lg:px-12 lg:py-36 xl:px-20">
+      <div className="mx-auto max-w-7xl">
+        <FadeInWhenVisible>
+          <div className="text-center">
+            <p className="font-sans text-xs uppercase tracking-wide-nav text-muted-foreground">
+              <span className="mr-2 text-accent">&mdash;</span>
+              Journal
+            </p>
+            <h2 className="mt-4 font-serif text-4xl font-light tracking-editorial text-foreground md:text-5xl">
+              Thoughts
+            </h2>
+          </div>
+        </FadeInWhenVisible>
 
-        <div className="grid gap-8 md:grid-cols-3">
+        <div className="mt-20 grid gap-8 md:grid-cols-3">
           {posts.map((post, i) => (
-            <motion.article
-              key={post.title}
-              initial={{ opacity: 0, y: 20 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{
-                duration: 0.7,
-                delay: 0.2 + i * 0.15,
-                ease: "easeOut",
-              }}
-              className="group cursor-pointer border border-divider p-8 transition-all duration-500 hover:border-accent"
-            >
-              <p className="font-[family-name:var(--font-dm-sans)] text-xs tracking-[0.15em] text-accent">
-                {post.date}
-              </p>
-              <h3 className="mt-4 font-[family-name:var(--font-cormorant)] text-2xl font-light tracking-[0.02em] text-foreground">
-                {post.title}
-              </h3>
-              <p className="mt-3 font-[family-name:var(--font-dm-sans)] text-sm leading-[1.7] text-text-secondary">
-                {post.excerpt}
-              </p>
-            </motion.article>
+            <FadeInWhenVisible key={post.title} delay={i * 0.12}>
+              <article className="group flex h-full flex-col border border-border p-8 transition-all duration-500 hover:border-accent/40">
+                <p className="font-sans text-xs uppercase tracking-wide-nav text-accent">
+                  {post.date}
+                </p>
+                <h3 className="mt-4 font-serif text-xl font-normal leading-snug tracking-editorial text-foreground">
+                  {post.title}
+                </h3>
+                <p className="mt-3 flex-1 font-sans text-sm leading-relaxed text-muted-foreground">
+                  {post.excerpt}
+                </p>
+              </article>
+            </FadeInWhenVisible>
           ))}
         </div>
       </div>

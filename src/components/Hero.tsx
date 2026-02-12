@@ -1,67 +1,107 @@
 "use client";
 
-import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
 import Image from "next/image";
+import { motion } from "framer-motion";
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 20 },
+  visible: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.8,
+      delay: 0.3 + i * 0.15,
+      ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
+    },
+  }),
+};
 
 export default function Hero() {
-  const ref = useRef<HTMLElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start start", "end start"],
-  });
-  const imageY = useTransform(scrollYProgress, [0, 1], ["0%", "15%"]);
-
   return (
-    <section
-      ref={ref}
-      className="relative flex min-h-screen flex-col-reverse lg:flex-row"
-    >
-      {/* Left — Text */}
-      <div className="flex w-full flex-col justify-center px-6 py-20 md:px-12 lg:w-[45%] lg:px-20 lg:py-0">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.3, ease: "easeOut" }}
-          className="max-w-md"
+    <section className="relative flex min-h-screen items-center overflow-hidden">
+      {/* Left Content */}
+      <div className="relative z-10 flex w-full flex-col justify-center px-6 py-32 lg:w-[45%] lg:px-12 xl:pl-20">
+        <motion.p
+          custom={0}
+          variants={fadeUp}
+          initial="hidden"
+          animate="visible"
+          className="font-serif text-sm uppercase tracking-wide-nav text-muted-foreground"
         >
-          <p className="font-[family-name:var(--font-cormorant)] text-sm tracking-[0.2em] text-text-secondary">
-            AI Founder & Marketer
-          </p>
+          AI Founder & Marketer
+        </motion.p>
 
-          <h1 className="mt-6 font-[family-name:var(--font-cormorant)] text-6xl font-light leading-[1.1] tracking-[0.03em] text-foreground md:text-7xl lg:text-[96px]">
-            Nikita
-            <br />
-            Kratcholov
-          </h1>
+        <motion.h1
+          custom={1}
+          variants={fadeUp}
+          initial="hidden"
+          animate="visible"
+          className="mt-6 font-serif text-6xl font-light leading-[1.1] tracking-editorial text-foreground md:text-7xl lg:text-[96px]"
+        >
+          Nikita
+          <br />
+          Kratcholov
+        </motion.h1>
 
-          <div className="my-8 h-px w-16 bg-divider" />
+        <motion.div
+          custom={2}
+          variants={fadeUp}
+          initial="hidden"
+          animate="visible"
+          className="my-8 h-px w-16 bg-accent"
+        />
 
-          <p className="font-[family-name:var(--font-dm-sans)] text-base leading-relaxed text-text-secondary">
-            Building AI products that solve real problems.
-          </p>
+        <motion.p
+          custom={3}
+          variants={fadeUp}
+          initial="hidden"
+          animate="visible"
+          className="max-w-sm font-sans text-base leading-relaxed text-muted-foreground"
+        >
+          Building AI products that solve real problems.
+        </motion.p>
 
-          <a
-            href="#work"
-            className="mt-10 inline-block border border-foreground px-8 py-3 font-[family-name:var(--font-dm-sans)] text-[13px] tracking-[0.15em] text-foreground transition-all duration-500 hover:bg-foreground hover:text-background"
-          >
-            Discover my work&ensp;&darr;
-          </a>
-        </motion.div>
+        <motion.a
+          custom={4}
+          variants={fadeUp}
+          initial="hidden"
+          animate="visible"
+          href="#work"
+          className="mt-10 inline-flex w-fit items-center gap-2 border border-foreground px-8 py-3.5 font-sans text-xs uppercase tracking-wide-nav text-foreground transition-all duration-500 hover:bg-foreground hover:text-background"
+        >
+          Discover my work
+          <span className="text-sm">&#8595;</span>
+        </motion.a>
       </div>
 
-      {/* Right — Image with parallax */}
-      <div className="relative h-[60vh] w-full overflow-hidden lg:h-auto lg:w-[55%]">
-        <motion.div style={{ y: imageY }} className="absolute inset-0">
-          <Image
-            src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1200&q=80&fit=crop"
-            alt="Nikita Kratcholov"
-            fill
-            className="object-cover"
-            priority
-            sizes="(max-width: 1024px) 100vw, 55vw"
-          />
-        </motion.div>
+      {/* Right Image — Desktop */}
+      <motion.div
+        initial={{ opacity: 0, scale: 1.05 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+        className="absolute right-0 top-0 hidden h-full w-[55%] lg:block"
+      >
+        <Image
+          src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=1200&q=80&fit=crop&crop=face"
+          alt="Nikita Kratcholov portrait"
+          fill
+          priority
+          className="object-cover object-center"
+          sizes="55vw"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-background via-background/30 to-transparent" />
+      </motion.div>
+
+      {/* Mobile hero image */}
+      <div className="absolute inset-0 -z-10 lg:hidden">
+        <Image
+          src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=800&q=60&fit=crop&crop=face"
+          alt=""
+          fill
+          priority
+          className="object-cover object-top opacity-20"
+          sizes="100vw"
+        />
       </div>
     </section>
   );

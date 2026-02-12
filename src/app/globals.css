@@ -1,58 +1,67 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-@theme inline {
-  --color-background: #FAFAF8;
-  --color-foreground: #1A1A1A;
-  --color-text-secondary: #6B6B6B;
-  --color-accent: #C9A96E;
-  --color-divider: #E8E4DF;
-  --font-heading: "Cormorant Garamond", serif;
-  --font-body: "DM Sans", sans-serif;
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+@layer base {
+  :root {
+    --background: 40 20% 97.6%;
+    --foreground: 0 0% 10%;
+    --card: 40 20% 97.6%;
+    --card-foreground: 0 0% 10%;
+    --primary: 0 0% 10%;
+    --primary-foreground: 40 20% 97.6%;
+    --secondary: 30 8% 90%;
+    --secondary-foreground: 0 0% 10%;
+    --muted: 30 8% 90%;
+    --muted-foreground: 0 0% 42%;
+    --accent: 37 42% 60%;
+    --accent-foreground: 0 0% 10%;
+    --border: 30 14% 89%;
+    --input: 30 14% 89%;
+    --ring: 37 42% 60%;
+    --radius: 0.25rem;
+  }
 }
 
-html {
-  scroll-behavior: smooth;
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+
+  ::selection {
+    background-color: hsl(37 42% 60%);
+    color: hsl(40 20% 97.6%);
+  }
 }
 
-body {
-  background-color: #FAFAF8;
-  color: #1A1A1A;
-  font-family: "DM Sans", sans-serif;
-  line-height: 1.6;
-  overflow-x: hidden;
-}
-
-::selection {
-  background-color: #C9A96E;
-  color: #FAFAF8;
-}
-
-h1, h2, h3, h4, h5, h6 {
-  font-family: "Cormorant Garamond", serif;
-  letter-spacing: 0.05em;
-  line-height: 1.2;
-}
-
-/* Scrollbar styling */
+/* Scrollbar */
 ::-webkit-scrollbar {
-  width: 6px;
+  width: 5px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #FAFAF8;
+  background: hsl(40 20% 97.6%);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #E8E4DF;
+  background: hsl(30 14% 89%);
   border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #C9A96E;
+  background: hsl(37 42% 60%);
 }

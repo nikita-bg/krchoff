@@ -9,8 +9,9 @@ import Gallery from "@/components/Gallery";
 import Blog from "@/components/Blog";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
+import type { BlogPost } from "@/lib/blog";
 
-export default function PageClient() {
+export default function PageClient({ posts }: { posts: BlogPost[] }) {
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -35,7 +36,7 @@ export default function PageClient() {
         <div className="mx-auto max-w-7xl px-6 lg:px-12">
           <div className="h-px w-full bg-border" />
         </div>
-        <Blog />
+        <Blog posts={posts} />
         <div className="mx-auto max-w-7xl px-6 lg:px-12">
           <div className="h-px w-full bg-border" />
         </div>

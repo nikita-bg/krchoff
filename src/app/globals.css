@@ -65,3 +65,110 @@
 ::-webkit-scrollbar-thumb:hover {
   background: hsl(37 42% 60%);
 }
+
+/* Blog prose styles */
+.prose-blog {
+  font-family: var(--font-dm-sans), sans-serif;
+  color: hsl(0 0% 10%);
+  line-height: 1.8;
+  font-size: 1.0625rem;
+}
+
+.prose-blog h2 {
+  font-family: var(--font-cormorant), serif;
+  font-weight: 400;
+  font-size: 1.75rem;
+  letter-spacing: 0.05em;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  color: hsl(0 0% 10%);
+}
+
+.prose-blog h3 {
+  font-family: var(--font-cormorant), serif;
+  font-weight: 400;
+  font-size: 1.35rem;
+  letter-spacing: 0.05em;
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+}
+
+.prose-blog p {
+  margin-bottom: 1.25rem;
+  color: hsl(0 0% 42%);
+}
+
+.prose-blog strong {
+  color: hsl(0 0% 10%);
+  font-weight: 500;
+}
+
+.prose-blog em {
+  font-style: italic;
+}
+
+.prose-blog ul,
+.prose-blog ol {
+  margin-bottom: 1.25rem;
+  padding-left: 1.5rem;
+  color: hsl(0 0% 42%);
+}
+
+.prose-blog ul {
+  list-style-type: disc;
+}
+
+.prose-blog ol {
+  list-style-type: decimal;
+}
+
+.prose-blog li {
+  margin-bottom: 0.5rem;
+}
+
+.prose-blog a {
+  color: hsl(37 42% 60%);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  transition: opacity 0.3s;
+}
+
+.prose-blog a:hover {
+  opacity: 0.7;
+}
+
+.prose-blog blockquote {
+  border-left: 2px solid hsl(37 42% 60%);
+  padding-left: 1.25rem;
+  margin: 1.5rem 0;
+  font-style: italic;
+  color: hsl(0 0% 42%);
+}
+
+.prose-blog code {
+  background: hsl(30 8% 90%);
+  padding: 0.15em 0.4em;
+  border-radius: 0.25rem;
+  font-size: 0.9em;
+}
+
+.prose-blog pre {
+  background: hsl(0 0% 10%);
+  color: hsl(40 20% 97.6%);
+  padding: 1.25rem;
+  border-radius: 0.25rem;
+  overflow-x: auto;
+  margin-bottom: 1.25rem;
+}
+
+.prose-blog pre code {
+  background: none;
+  padding: 0;
+  color: inherit;
+}
+
+.prose-blog hr {
+  border: none;
+  border-top: 1px solid hsl(30 14% 89%);
+  margin: 2.5rem 0;
+}

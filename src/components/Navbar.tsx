@@ -1,11 +1,13 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 import { motion } from "framer-motion";
 
 const navLinks = [
   { label: "about", href: "#about" },
   { label: "work", href: "#work" },
+  { label: "blog", href: "/blog" },
   { label: "contact", href: "#contact" },
 ];
 
@@ -42,12 +44,21 @@ export default function Navbar() {
           <ul className="hidden items-center gap-10 md:flex">
             {navLinks.map((link) => (
               <li key={link.href}>
-                <a
-                  href={link.href}
-                  className="font-sans text-xs uppercase tracking-wide-nav text-muted-foreground transition-colors duration-300 hover:text-foreground"
-                >
-                  {link.label}
-                </a>
+                {link.href.startsWith("#") ? (
+                  <a
+                    href={link.href}
+                    className="font-sans text-xs uppercase tracking-wide-nav text-muted-foreground transition-colors duration-300 hover:text-foreground"
+                  >
+                    {link.label}
+                  </a>
+                ) : (
+                  <Link
+                    href={link.href}
+                    className="font-sans text-xs uppercase tracking-wide-nav text-muted-foreground transition-colors duration-300 hover:text-foreground"
+                  >
+                    {link.label}
+                  </Link>
+                )}
               </li>
             ))}
           </ul>
@@ -80,19 +91,36 @@ export default function Navbar() {
           exit={{ opacity: 0 }}
           className="fixed inset-0 z-40 flex flex-col items-center justify-center bg-background/[0.98] backdrop-blur-xl md:hidden"
         >
-          {navLinks.map((link, i) => (
-            <motion.a
-              key={link.href}
-              href={link.href}
-              onClick={() => setMobileOpen(false)}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: i * 0.1, duration: 0.4 }}
-              className="py-4 font-serif text-3xl tracking-editorial text-foreground"
-            >
-              {link.label}
-            </motion.a>
-          ))}
+          {navLinks.map((link, i) =>
+            link.href.startsWith("#") ? (
+              <motion.a
+                key={link.href}
+                href={link.href}
+                onClick={() => setMobileOpen(false)}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: i * 0.1, duration: 0.4 }}
+                className="py-4 font-serif text-3xl tracking-editorial text-foreground"
+              >
+                {link.label}
+              </motion.a>
+            ) : (
+              <motion.div
+                key={link.href}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: i * 0.1, duration: 0.4 }}
+              >
+                <Link
+                  href={link.href}
+                  onClick={() => setMobileOpen(false)}
+                  className="py-4 font-serif text-3xl tracking-editorial text-foreground"
+                >
+                  {link.label}
+                </Link>
+              </motion.div>
+            )
+          )}
         </motion.div>
       )}
     </>

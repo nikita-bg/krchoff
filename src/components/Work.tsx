@@ -48,6 +48,30 @@ const projects = [
     image: "/work-xplife.png",
     link: "https://xplife.app/",
   },
+  {
+    title: "Savanna Bay",
+    tagline: "Luxury Safari Hotel",
+    description:
+      "A premium boutique hotel website showcasing a 5-star safari lodge experience near Johannesburg, with elegant room showcases, dining, and reservation system.",
+    image: "/work-safari-hotel.jpg",
+    link: "https://safari-boutique-hotel-premium-pldc.vercel.app/",
+  },
+  {
+    title: "Highveld Guest House",
+    tagline: "Boutique Accommodation",
+    description:
+      "A warm and inviting guest house website featuring South African hospitality, room bookings, guest amenities, and reviews — located in Nigel, Gauteng.",
+    image: "/work-highveld-guesthouse.jpg",
+    link: "https://highveld-guest-house.vercel.app/",
+  },
+  {
+    title: "Smile Dental Care",
+    tagline: "Dental Practice Website",
+    description:
+      "A modern dental care website with online booking, service listings, medical aid information, and patient testimonials for a practice in Nigel and Gauteng.",
+    image: "/work-smile-dental.jpg",
+    link: "https://v0-smile-dental-care-website.vercel.app/",
+  },
 ];
 
 export default function Work() {

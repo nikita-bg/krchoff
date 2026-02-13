@@ -35,13 +35,28 @@ export default function Contact() {
     email: "",
     message: "",
   });
-  const [submitted, setSubmitted] = useState(false);
+  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
 
-  function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    setSubmitted(true);
-    setTimeout(() => setSubmitted(false), 4000);
-    setFormState({ name: "", email: "", message: "" });
+    setStatus("sending");
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formState),
+      });
+
+      if (!res.ok) throw new Error();
+
+      setStatus("sent");
+      setFormState({ name: "", email: "", message: "" });
+      setTimeout(() => setStatus("idle"), 4000);
+    } catch {
+      setStatus("error");
+      setTimeout(() => setStatus("idle"), 4000);
+    }
   }
 
   return (
@@ -59,10 +74,10 @@ export default function Contact() {
 
         <FadeInWhenVisible delay={0.15}>
           <a
-            href="mailto:nikita@krchoff.com"
+            href="mailto:support@simplifyopsco.com"
             className="mt-6 inline-block font-sans text-base text-muted-foreground underline decoration-accent/50 underline-offset-4 transition-colors duration-300 hover:text-foreground"
           >
-            nikita@krchoff.com
+            support@simplifyopsco.com
           </a>
         </FadeInWhenVisible>
 
@@ -136,7 +151,13 @@ export default function Contact() {
                 type="submit"
                 className="inline-flex items-center border border-foreground px-10 py-3.5 font-sans text-xs uppercase tracking-wide-nav text-foreground transition-all duration-500 hover:bg-foreground hover:text-background"
               >
-                {submitted ? "Message Sent" : "Send Message"}
+                {status === "sending"
+                  ? "Sending..."
+                  : status === "sent"
+                    ? "Message Sent"
+                    : status === "error"
+                      ? "Failed — Try Again"
+                      : "Send Message"}
               </button>
             </div>
           </form>

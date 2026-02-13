@@ -14,6 +14,13 @@ export async function POST(req: NextRequest) {
   const body = await req.json();
   const { title, slug, content, excerpt } = body;
 
+  if (!GITHUB_TOKEN) {
+    return NextResponse.json(
+      { error: "GITHUB_TOKEN not configured" },
+      { status: 500 }
+    );
+  }
+
   if (!title || !slug || !content) {
     return NextResponse.json(
       { error: "Missing required fields: title, slug, content" },
@@ -32,7 +39,7 @@ excerpt: "${(excerpt || "").replace(/"/g, '\\"')}"
 ${content}
 `;
 
-  const filePath = `krchoff/content/blog/${slug}.md`;
+  const filePath = `content/blog/${slug}.md`;
   const encoded = Buffer.from(markdown).toString("base64");
 
   const res = await fetch(

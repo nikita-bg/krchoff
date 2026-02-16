@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Cormorant_Garamond, DM_Sans } from "next/font/google";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import "./globals.css";
 
 const cormorant = Cormorant_Garamond({
@@ -29,6 +30,9 @@ export const metadata: Metadata = {
     type: "website",
   },
   metadataBase: new URL("https://krchoff.com"),
+  verification: {
+    google: "ieNT64OpFIdNXWqJbr_tj7FWEAyHarB6G2WmYAdM590",
+  },
 };
 
 export default function RootLayout({
@@ -39,6 +43,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${cormorant.variable} ${dmSans.variable}`}>
       <body className="font-sans antialiased">{children}</body>
+      <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID || ""} />
     </html>
   );
 }

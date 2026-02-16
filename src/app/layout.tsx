@@ -43,7 +43,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${cormorant.variable} ${dmSans.variable}`}>
       <body className="font-sans antialiased">{children}</body>
-      <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID || ""} />
+      <GoogleAnalytics gaId="G-NMWTC811CY" />
     </html>
   );
 }

@@ -19,6 +19,22 @@ export async function generateMetadata({
   return {
     title: `${post.title} — Nikita Kratcholov`,
     description: post.excerpt,
+    alternates: {
+      canonical: `/blog/${slug}`,
+    },
+    openGraph: {
+      title: post.title,
+      description: post.excerpt,
+      type: "article",
+      publishedTime: post.date,
+      authors: ["Nikita Kratcholov"],
+      url: `/blog/${slug}`,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: post.title,
+      description: post.excerpt,
+    },
   };
 }
 
@@ -34,8 +50,26 @@ export default async function BlogPostPage({
     notFound();
   }
 
+  const blogPostingJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: post.title,
+    description: post.excerpt,
+    datePublished: post.date,
+    author: {
+      "@type": "Person",
+      name: "Nikita Kratcholov",
+      url: "https://krchoff.com",
+    },
+    url: `https://krchoff.com/blog/${slug}`,
+  };
+
   return (
     <div className="min-h-screen bg-background">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(blogPostingJsonLd) }}
+      />
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5 lg:px-12">
         <Link
           href="/"

@@ -6,6 +6,7 @@ import Hero from "@/components/Hero";
 import About from "@/components/About";
 import Work from "@/components/Work";
 import Gallery from "@/components/Gallery";
+import FAQ from "@/components/FAQ";
 import Blog from "@/components/Blog";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
@@ -33,6 +34,10 @@ export default function PageClient({ posts }: { posts: BlogPost[] }) {
           <div className="h-px w-full bg-border" />
         </div>
         <Gallery />
+        <div className="mx-auto max-w-7xl px-6 lg:px-12">
+          <div className="h-px w-full bg-border" />
+        </div>
+        <FAQ />
         <div className="mx-auto max-w-7xl px-6 lg:px-12">
           <div className="h-px w-full bg-border" />
         </div>

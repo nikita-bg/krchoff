@@ -36,17 +36,19 @@ const projects = [
     title: "SimplifyOpsCo",
     tagline: "AI Voice Receptionist",
     description:
-      "An intelligent voice AI system that handles customer calls, books appointments, and streamlines business operations around the clock.",
+      "An intelligent voice AI system that handles customer calls, books appointments, and streamlines business operations around the clock. Reduced missed calls by 90% for medical spa clients.",
     image: "/work-simplifyops.jpg",
     link: "https://simplifyopsco.com/",
+    stats: "90% fewer missed calls",
   },
   {
     title: "XPLife",
     tagline: "AI Productivity App",
     description:
-      "A smart productivity platform powered by AI that helps users organize their lives, track goals, and build better habits.",
+      "A smart productivity platform powered by AI that helps users organize their lives, track goals, and build better habits. Helping users save 2+ hours daily through intelligent task automation.",
     image: "/work-xplife.png",
     link: "https://xplife.app/",
+    stats: "2+ hours saved daily",
   },
   {
     title: "Savanna Bay",

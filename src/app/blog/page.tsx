@@ -5,14 +5,15 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Blog — Nikita Kratcholov",
-  description: "Thoughts on AI products, startups, and building with purpose.",
+  description:
+    "Articles and insights on AI automation, Next.js development, productivity tools, and building intelligent solutions for modern businesses. Technical deep-dives and real-world case studies.",
   alternates: {
     canonical: "/blog",
   },
   openGraph: {
     title: "Blog — Nikita Kratcholov",
     description:
-      "Thoughts on AI products, startups, and building with purpose.",
+      "Articles and insights on AI automation, Next.js development, productivity tools, and building intelligent solutions for modern businesses.",
     url: "/blog",
     type: "website",
   },
@@ -20,7 +21,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Blog — Nikita Kratcholov",
     description:
-      "Thoughts on AI products, startups, and building with purpose.",
+      "Articles and insights on AI automation, Next.js development, productivity tools, and building intelligent solutions for modern businesses.",
   },
 };
 

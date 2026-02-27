@@ -20,7 +20,7 @@ const dmSans = DM_Sans({
 export const metadata: Metadata = {
   title: "Nikita Kratcholov — AI Founder & Marketer",
   description:
-    "Personal portfolio of Nikita Kratcholov. Building AI products that solve real problems.",
+    "Personal portfolio of Nikita Kratcholov. AI automation consultant building intelligent solutions with Next.js, voice AI receptionists, and productivity tools for startups and businesses.",
   authors: [{ name: "Nikita Kratcholov", url: "https://krchoff.com" }],
   creator: "Nikita Kratcholov",
   publisher: "Nikita Kratcholov",
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Nikita Kratcholov — AI Founder & Marketer",
     description:
-      "Personal portfolio of Nikita Kratcholov. Building AI products that solve real problems.",
+      "AI automation consultant building intelligent solutions with Next.js, voice AI receptionists, and productivity tools for startups and businesses.",
     url: "https://krchoff.com",
     siteName: "krchoff.com",
     type: "website",
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Nikita Kratcholov — AI Founder & Marketer",
     description:
-      "Personal portfolio of Nikita Kratcholov. Building AI products that solve real problems.",
+      "AI automation consultant building intelligent solutions with Next.js, voice AI receptionists, and productivity tools for startups and businesses.",
   },
   metadataBase: new URL("https://krchoff.com"),
   verification: {
@@ -67,12 +67,37 @@ export default function RootLayout({
     ],
   };
 
+  const websiteJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: "Nikita Kratcholov Portfolio",
+    url: "https://krchoff.com",
+    description:
+      "AI automation consultant and founder specializing in voice AI, productivity tools, and intelligent business solutions.",
+    author: {
+      "@type": "Person",
+      name: "Nikita Kratcholov",
+    },
+    potentialAction: {
+      "@type": "SearchAction",
+      target: {
+        "@type": "EntryPoint",
+        urlTemplate: "https://krchoff.com/blog?q={search_term_string}",
+      },
+      "query-input": "required name=search_term_string",
+    },
+  };
+
   return (
     <html lang="en" className={`${cormorant.variable} ${dmSans.variable}`}>
       <body className="font-sans antialiased">
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
         />
         {children}
       </body>
